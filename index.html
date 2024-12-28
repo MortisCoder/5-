@@ -62,85 +62,15 @@
             transform: translateX(5px);
         }
 
-        /* Статистика класса */
-        .class-statistics {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .class-statistics h2 {
-            color: #388e3c;
+        /* Отличники */
+        .honor {
             font-weight: bold;
+            color: #388e3c;
         }
 
-        .class-statistics p {
-            font-size: 1.1rem;
-            margin: 10px 0;
-        }
-
-        /* Переключатель темы */
-        .theme-toggle {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        #toggle-theme {
-            padding: 12px 25px;
-            background-color: #2c7b2f;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        #toggle-theme:hover {
-            background-color: #388e3c;
-        }
-
-        /* Темная тема */
-        body.dark-mode {
-            background-color: #121212;
-            color: #f7f7f7;
-        }
-
-        body.dark-mode h1 {
-            color: #81c784;
-        }
-
-        body.dark-mode h2 {
-            color: #81c784;
-        }
-
-        body.dark-mode .class-statistics {
-            background-color: #333;
-            color: #f7f7f7;
-        }
-
-        body.dark-mode .class-statistics h2 {
-            color: #81c784;
-        }
-
-        body.dark-mode ul li {
-            background-color: #444;
-            color: #f7f7f7;
-        }
-
-        body.dark-mode ul li:hover {
-            background-color: #555;
-        }
-
-        body.dark-mode #toggle-theme {
-            background-color: #81c784;
-        }
-
-        body.dark-mode #toggle-theme:hover {
-            background-color: #66bb6a;
+        .starosta {
+            color: #FFD700; /* Золотой цвет */
+            font-weight: bold;
         }
     </style>
 </head>
@@ -157,10 +87,10 @@
             <li>Абдымуталиев Арсен</li>
             <li>Айтназаров Нурсултан</li>
             <li>Айтыгулова Аделина</li>
-            <li>Алмазов Эйнар</li>
+            <li class="starosta">Алмазов Эйнар — Староста</li>
+            <li class="honor">Асанов Элмар — Отличник</li>
             <li>Анарбаев Алихан</li>
             <li>Анарбаев Рамазан</li>
-            <li>Асанов Элмар</li>
             <li>Аскарбекова Акылай</li>
             <li>Аскат кызы Каныкей</li>
             <li>Аскеров Ислам</li>
@@ -177,7 +107,7 @@
             <li>Керимбекова Элина</li>
             <li>Мансуров Санжар</li>
             <li>Маратов Улукмырза</li>
-            <li>Миргазиева Халима</li>
+            <li class="honor">Миргазиева Халима — Отличница</li>
             <li>Муратов Элдар</li>
             <li>Намазбеков Бейше</li>
             <li>Нурбеков Эллан</li>
@@ -197,18 +127,6 @@
         <p><strong>Количество мальчиков:</strong> 20</p>
         <p><strong>Количество девочек:</strong> 14</p>
     </section>
-
-    <!-- Переключатель темы -->
-    <section class="theme-toggle">
-        <button id="toggle-theme">Переключить тему</button>
-    </section>
-
-    <script>
-        // Переключатель темы
-        document.getElementById('toggle-theme').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-    </script>
 </body>
 
 </html>
