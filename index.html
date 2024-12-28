@@ -121,64 +121,105 @@
 		<h2>Список учеников:</h2>
 		<h3>Класс жетекчи:</h3>
 		<li>Чымылдакова Гулжан❤️</li>
-		<ul id="student-list">
-			<li data-student="Абдрасаков Нуриман">Абдрасаков Нуриман <span class="points">(0 галочек)</span></li>
-			<li data-student="Абдымуталиев Арсен">Абдымуталиев Арсен <span class="points">(0 галочек)</span></li>
-			<li data-student="Айтназаров Нурсултан">Айтназаров Нурсултан <span class="points">(0 галочек)</span></li>
-			<!-- Добавьте остальных учеников аналогично -->
+		<ul>
+			<li>Абдрасаков Нуриман</li>
+			<li>Абдымуталиев Арсен</li>
+			<li>Айтназаров Нурсултан</li>
+			<li>Айтыгулова Аделина</li>
+			<li class="starosta">Алмазов Эйнар — Староста</li>
+			<li>Асанов Элмар</li>
+			<li>Анарбаев Алихан</li>
+			<li>Анарбаев Рамазан</li>
+			<li>Аскарбекова Акылай</li>
+			<li>Аскат кызы Каныкей</li>
+			<li>Аскеров Ислам</li>
+			<li>Байдоолотов Түгөлбай</li>
+			<li>Бактыбеков Тагай</li>
+			<li class="honor">Бакытбекова Каухар — Тазалык сектор</li>
+			<li>Бекмырзаева Чолпонай</li>
+			<li>Жанышев Ай-теңир</li>
+			<li>Жолдошбекова Санира</li>
+			<li>Жумакунов Жанат</li>
+			<li>Идрисова Салима</li>
+			<li>Ильичбекова Камила</li>
+			<li>Калмаматова Амина</li>
+			<li>Керимбекова Элина</li>
+			<li>Мансуров Санжар</li>
+			<li>Маратов Улукмырза</li>
+			<li>Миргазиева Халима</li>
+			<li class="honor">Муратов Элдар — Жардамчы</li>
+			<li>Намазбеков Бейше</li>
+			<li>Нурбеков Эллан</li>
+			<li>Нурболотов Нурнасип</li>
+			<li>Сабырбекова Мырзайым</li>
+			<li>Табалдиева Сабина</li>
+			<li>Турдубеков Нуриман</li>
+			<li>Төлömүшөв Кайрат</li>
+			<li>Эсенбекова Каныкей</li>
 		</ul>
+	</section>
+
+	<!-- Статистика класса -->
+	<section class="class-statistics">
+		<h2>Статистика класса:</h2>
+		<p><strong>Общее количество учеников:</strong> 34</p>
+		<p><strong>Количество мальчиков:</strong> 20</p>
+		<p><strong>Количество девочек:</strong> 14</p>
 	</section>
 
 	<!-- График дежурства -->
 	<section class="duty-schedule">
 		<h2>График дежурства:</h2>
 		<ul>
-			<li class="check-container" data-duty="Абдрасаков Нуриман, Абдымуталиев Арсен, Айтыгулова Аделина">
-				<strong>Число:</strong> 13 / <strong>День:</strong> пн — <strong>Дежурят:</strong> Абдрасаков Нуриман,
-				Абдымуталиев Арсен, Айтыгулова Аделина
-				<input type="checkbox" class="checkbox" disabled>
+			<li class="check-container"><strong>Число:</strong> 13 / <strong>День:</strong> пн —
+				<strong>Дежурят:</strong> Абдрасаков Нуриман,
+				Абдымуталиев Арсен, Айтыгулова Аделина <input type="checkbox" class="checkbox" disabled>
 			</li>
-			<!-- Добавьте остальные дни аналогично -->
+			<li class="check-container"><strong>Число:</strong> 14 / <strong>День:</strong> вт —
+				<strong>Дежурят:</strong> Айтназаров Нурсултан,
+				Алмазов Эйнар, Аскарбекова Акылай <input type="checkbox" class="checkbox" disabled>
+			</li>
+			<li class="check-container"><strong>Число:</strong> 15 / <strong>День:</strong> ср —
+				<strong>Дежурят:</strong> Асанов Элмар,
+				Анарбаев Алихан, Анарбаев Рамазан <input type="checkbox" class="checkbox" disabled>
+			</li>
+			<li class="check-container"><strong>Число:</strong> 16 / <strong>День:</strong> чт —
+				<strong>Дежурят:</strong> Аскеров Ислам,
+				Бактыбеков Тагай, Бекмырзаева Чолпонай <input type="checkbox" class="checkbox" disabled>
+			</li>
+			<li class="check-container"><strong>Число:</strong> 17 / <strong>День:</strong> пт —
+				<strong>Дежурят:</strong> Жанышев Ай-теңир,
+				Жолдошбекова Санира, Жумакунов Жанат <input type="checkbox" class="checkbox" disabled>
+			</li>
+			<li class="check-container"><strong>Число:</strong> 18 / <strong>День:</strong> сб —
+				<strong>Дежурят:</strong> Идрисова Салима,
+				Ильичбекова Камила, Калмаматова Амина <input type="checkbox" class="checkbox" disabled>
+			</li>
+			<li class="check-container"><strong>Число:</strong> 19 / <strong>День:</strong> вс —
+				<strong>Дежурят:</strong> Керимбекова Элина,
+				Мансуров Санжар, Маратов Улукмырза <input type="checkbox" class="checkbox" disabled>
+			</li>
 		</ul>
 		<button id="unlock-button">Включить редактирование</button>
 	</section>
 
 	<script>
-		const PASSWORD = "Starlo"; // Пароль для разблокировки
+		// Пароль для разблокировки
+		const PASSWORD = "Starlo"; // Установите свой пароль
 		const unlockButton = document.getElementById("unlock-button");
 		const checkboxes = document.querySelectorAll(".checkbox");
-		const studentPoints = {};
-
-		// Инициализация очков для учеников
-		document.querySelectorAll("#student-list li").forEach(li => {
-			const studentName = li.getAttribute("data-student");
-			studentPoints[studentName] = 0;
-		});
 
 		unlockButton.addEventListener("click", () => {
 			const inputPassword = prompt("Введите пароль для редактирования:");
 			if (inputPassword === PASSWORD) {
 				checkboxes.forEach(checkbox => {
-					checkbox.disabled = false;
-					checkbox.addEventListener("change", (event) => {
-						if (event.target.checked) {
-							const dutyStudents = event.target.closest(".check-container").getAttribute("data-duty").split(", ");
-							dutyStudents.forEach(student => {
-								studentPoints[student]++;
-								updateStudentPoints(student);
-							});
-						}
-					});
+					checkbox.disabled = false; // Разблокировать чекбоксы
 				});
 				alert("Редактирование разблокировано.");
 			} else {
 				alert("Неверный пароль!");
 			}
 		});
-
-		function updateStudentPoints(student) {
-			document.querySelector(`#student-list li[data-student="${student}"] .points`).textContent = `(${studentPoints[student]} галочек)`;
-		}
 	</script>
 </body>
 
