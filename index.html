@@ -64,50 +64,16 @@
 
 		.starosta {
 			color: #FFD700;
-			/* Золотой цвет */
 			font-weight: bold;
 		}
 
-		/* Отличники */
 		.honor {
 			font-weight: bold;
 			color: #007219;
 		}
 
-		h3 {
-			font-weight: bold;
-			color: Black;
-		}
-
-		.check-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		input[type="checkbox"] {
-			transform: scale(1.5);
-			cursor: pointer;
-		}
-
-		.locked {
-			pointer-events: none;
-			opacity: 0.6;
-		}
-
-		button {
-			padding: 10px 20px;
-			font-size: 1rem;
-			background-color: #007219;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			margin-top: 20px;
-		}
-
-		button:hover {
-			background-color: #005b16;
+		.duty-checkbox {
+			margin-left: 10px;
 		}
 	</style>
 </head>
@@ -159,7 +125,6 @@
 		</ul>
 	</section>
 
-	<!-- Статистика класса -->
 	<section class="class-statistics">
 		<h2>Статистика класса:</h2>
 		<p><strong>Общее количество учеников:</strong> 34</p>
@@ -167,58 +132,52 @@
 		<p><strong>Количество девочек:</strong> 14</p>
 	</section>
 
-	<!-- График дежурства -->
 	<section class="duty-schedule">
 		<h2>График дежурства:</h2>
 		<ul>
-			<li class="check-container"><strong>Число:</strong> 13 / <strong>День:</strong> пн —
-				<strong>Дежурят:</strong> Абдрасаков Нуриман,
-				Абдымуталиев Арсен, Айтыгулова Аделина <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 14 / <strong>День:</strong> вт —
-				<strong>Дежурят:</strong> Айтназаров Нурсултан,
-				Алмазов Эйнар, Аскарбекова Акылай <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 15 / <strong>День:</strong> ср —
-				<strong>Дежурят:</strong> Асанов Элмар,
-				Анарбаев Алихан, Анарбаев Рамазан <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 16 / <strong>День:</strong> чт —
-				<strong>Дежурят:</strong> Аскеров Ислам,
-				Бактыбеков Тагай, Бекмырзаева Чолпонай <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 17 / <strong>День:</strong> пт —
-				<strong>Дежурят:</strong> Жанышев Ай-теңир,
-				Жолдошбекова Санира, Жумакунов Жанат <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 18 / <strong>День:</strong> сб —
-				<strong>Дежурят:</strong> Идрисова Салима,
-				Ильичбекова Камила, Калмаматова Амина <input type="checkbox" class="checkbox" disabled>
-			</li>
-			<li class="check-container"><strong>Число:</strong> 19 / <strong>День:</strong> вс —
-				<strong>Дежурят:</strong> Керимбекова Элина,
-				Мансуров Санжар, Маратов Улукмырза <input type="checkbox" class="checkbox" disabled>
-			</li>
+			<li><strong>Понедельник:</strong> Арсен, Нуриман, Аделина <input type="checkbox" class="duty-checkbox"
+					data-day="monday"></li>
+			<li><strong>Вторник:</strong> Нурсултан, Эйнар, Акылай <input type="checkbox" class="duty-checkbox"
+					data-day="tuesday"></li>
+			<li><strong>Среда:</strong> Элмар, Алихан, А.Каныкей <input type="checkbox" class="duty-checkbox"
+					data-day="wednesday"></li>
+			<li><strong>Четверг:</strong> Рамазан, Ислам, Каухар <input type="checkbox" class="duty-checkbox"
+					data-day="thursday"></li>
+			<li><strong>Пятница:</strong> Түгөлбай, Тагай, Чолпонай <input type="checkbox" class="duty-checkbox"
+					data-day="friday"></li>
 		</ul>
-		<button id="unlock-button">Включить редактирование</button>
 	</section>
 
 	<script>
-		// Пароль для разблокировки
-		const PASSWORD = "Starlo"; // Установите свой пароль
-		const unlockButton = document.getElementById("unlock-button");
-		const checkboxes = document.querySelectorAll(".checkbox");
+		// Обработчик для всех чекбоксов
+		const checkboxes = document.querySelectorAll('.duty-checkbox');
+		checkboxes.forEach(checkbox => {
+			checkbox.addEventListener('change', (e) => {
+				const day = e.target.dataset.day;
+				const isChecked = e.target.checked;
 
-		unlockButton.addEventListener("click", () => {
-			const inputPassword = prompt("Введите пароль для редактирования:");
-			if (inputPassword === PASSWORD) {
-				checkboxes.forEach(checkbox => {
-					checkbox.disabled = false; // Разблокировать чекбоксы
-				});
-				alert("Редактирование разблокировано.");
-			} else {
-				alert("Неверный пароль!");
-			}
+				// Если чекбокс установлен, запросить код
+				if (isChecked) {
+					const code = prompt('Введите код для подтверждения:');
+					if (code !== 'Starlo') {
+						e.target.checked = false; // Сбрасываем чекбокс, если код неверный
+						alert('Неверный код! Попробуйте снова.');
+					}
+				}
+				// Сохраняем состояние чекбоксов в localStorage
+				localStorage.setItem(day, JSON.stringify(isChecked));
+			});
+		});
+
+		// Восстанавливаем состояние чекбоксов после загрузки страницы
+		window.addEventListener('load', () => {
+			checkboxes.forEach(checkbox => {
+				const day = checkbox.dataset.day;
+				const savedState = localStorage.getItem(day);
+				if (savedState) {
+					checkbox.checked = JSON.parse(savedState);
+				}
+			});
 		});
 	</script>
 </body>
