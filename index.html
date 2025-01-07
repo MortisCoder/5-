@@ -62,6 +62,10 @@
 			transform: translateX(5px);
 		}
 
+		ul li.checked {
+			background-color: #d0f0c0;
+		}
+
 		.starosta {
 			color: #FFD700;
 			font-weight: bold;
@@ -74,6 +78,7 @@
 
 		.duty-checkbox {
 			margin-left: 10px;
+			size: 20px;
 		}
 	</style>
 </head>
@@ -120,7 +125,7 @@
 			<li>Сабырбекова Мырзайым</li>
 			<li>Табалдиева Сабина</li>
 			<li>Турдубеков Нуриман</li>
-			<li>Төлömүшөв Кайрат</li>
+			<li>Төлөмүшөв Кайрат</li>
 			<li>Эсенбекова Каныкей</li>
 		</ul>
 	</section>
@@ -149,36 +154,56 @@
 	</section>
 
 	<script>
-		// Обработчик для всех чекбоксов
+		const ws = new WebSocket('ws://localhost:8080');
+
+		// Обработчик получения сообщений от сервера
+		ws.onmessage = (event) => {
+			const message = JSON.parse(event.data);
+
+			if (message.type === 'sync') {
+				// Синхронизируем состояния всех чекбоксов при подключении
+				Object.entries(message.data).forEach(([day, isChecked]) => {
+					const checkbox = document.querySelector(`.duty-checkbox[data-day="${day}"]`);
+					if (checkbox) {
+						checkbox.checked = isChecked;
+						updateCheckboxStyle(checkbox);
+					}
+				});
+			} else if (message.type === 'update') {
+				// Обновляем состояние конкретного чекбокса
+				const { day, isChecked } = message;
+				const checkbox = document.querySelector(`.duty-checkbox[data-day="${day}"]`);
+				if (checkbox) {
+					checkbox.checked = isChecked;
+					updateCheckboxStyle(checkbox);
+				}
+			}
+		};
+
+		// Функция обновления стиля чекбокса
+		function updateCheckboxStyle(checkbox) {
+			const parentLi = checkbox.closest('li');
+			if (checkbox.checked) {
+				parentLi.classList.add('checked');
+			} else {
+				parentLi.classList.remove('checked');
+			}
+		}
+
+		// Отправка состояния чекбокса на сервер
 		const checkboxes = document.querySelectorAll('.duty-checkbox');
-		checkboxes.forEach(checkbox => {
+		checkboxes.forEach((checkbox) => {
 			checkbox.addEventListener('change', (e) => {
 				const day = e.target.dataset.day;
 				const isChecked = e.target.checked;
 
-				// Если чекбокс установлен, запросить код
-				if (isChecked) {
-					const code = prompt('Введите код для подтверждения:');
-					if (code !== 'Starlo') {
-						e.target.checked = false; // Сбрасываем чекбокс, если код неверный
-						alert('Неверный код! Попробуйте снова.');
-					}
-				}
-				// Сохраняем состояние чекбоксов в localStorage
-				localStorage.setItem(day, JSON.stringify(isChecked));
+				// Отправляем данные на сервер
+				ws.send(JSON.stringify({ type: 'update', day, isChecked }));
+				updateCheckboxStyle(e.target);
 			});
 		});
 
-		// Восстанавливаем состояние чекбоксов после загрузки страницы
-		window.addEventListener('load', () => {
-			checkboxes.forEach(checkbox => {
-				const day = checkbox.dataset.day;
-				const savedState = localStorage.getItem(day);
-				if (savedState) {
-					checkbox.checked = JSON.parse(savedState);
-				}
-			});
-		});
+
 	</script>
 </body>
 
