@@ -48,6 +48,8 @@
 		}
 
 		ul li {
+			display: flex;
+			align-items: center;
 			padding: 8px;
 			font-size: 1.1rem;
 			margin: 5px 0;
@@ -76,9 +78,25 @@
 			color: #007219;
 		}
 
-		.duty-checkbox {
-			margin-left: 10px;
-			size: 20px;
+		.attendance-checkbox {
+			margin-left: auto;
+		}
+
+		.edit-button {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			background-color: #4caf50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: background-color 0.3s ease;
+		}
+
+		.edit-button:hover {
+			background-color: #45a049;
 		}
 	</style>
 </head>
@@ -90,44 +108,60 @@
 
 	<section class="main-content">
 		<h2>Список учеников:</h2>
-		<h3>Класс жетекчи:</h3>
-		<li>Чымылдакова Гулжан❤️</li>
 		<ul>
-			<li>Абдрасаков Нуриман</li>
-			<li>Абдымуталиев Арсен</li>
-			<li>Айтназаров Нурсултан</li>
-			<li>Айтыгулова Аделина</li>
-			<li class="starosta">Алмазов Эйнар — Староста</li>
-			<li>Асанов Элмар</li>
-			<li>Анарбаев Алихан</li>
-			<li>Анарбаев Рамазан</li>
-			<li>Аскарбекова Акылай</li>
-			<li>Аскат кызы Каныкей</li>
-			<li>Аскеров Ислам</li>
-			<li>Байдоолотов Түгөлбай</li>
-			<li>Бактыбеков Тагай</li>
-			<li class="honor">Бакытбекова Каухар — Тазалык сектор</li>
-			<li>Бекмырзаева Чолпонай</li>
-			<li>Жанышев Ай-теңир</li>
-			<li>Жолдошбекова Санира</li>
-			<li>Жумакунов Жанат</li>
-			<li>Идрисова Салима</li>
-			<li>Ильичбекова Камила</li>
-			<li>Калмаматова Амина</li>
-			<li>Керимбекова Элина</li>
-			<li>Мансуров Санжар</li>
-			<li>Маратов Улукмырза</li>
-			<li>Миргазиева Халима</li>
-			<li class="honor">Муратов Элдар — Жардамчы</li>
-			<li>Намазбеков Бейше</li>
-			<li>Нурбеков Эллан</li>
-			<li>Нурболотов Нурнасип</li>
-			<li>Сабырбекова Мырзайым</li>
-			<li>Табалдиева Сабина</li>
-			<li>Турдубеков Нуриман</li>
-			<li>Төлөмүшөв Кайрат</li>
-			<li>Эсенбекова Каныкей</li>
+			<li>Абдрасаков Нуриман <input type="checkbox" class="attendance-checkbox" data-name="Абдрасаков Нуриман">
+			</li>
+			<li>Абдымуталиев Арсен <input type="checkbox" class="attendance-checkbox" data-name="Абдымуталиев Арсен">
+			</li>
+			<li>Айтназаров Нурсултан <input type="checkbox" class="attendance-checkbox"
+					data-name="Айтназаров Нурсултан"></li>
+			<li>Айтыгулова Аделина <input type="checkbox" class="attendance-checkbox" data-name="Айтыгулова Аделина">
+			</li>
+			<li class="starosta">Алмазов Эйнар — Староста <input type="checkbox" class="attendance-checkbox"
+					data-name="Алмазов Эйнар"></li>
+			<li>Асанов Элмар <input type="checkbox" class="attendance-checkbox" data-name="Асанов Элмар"></li>
+			<li>Анарбаев Алихан <input type="checkbox" class="attendance-checkbox" data-name="Анарбаев Алихан"></li>
+			<li>Анарбаев Рамазан <input type="checkbox" class="attendance-checkbox" data-name="Анарбаев Рамазан"></li>
+			<li>Аскарбекова Акылай <input type="checkbox" class="attendance-checkbox" data-name="Аскарбекова Акылай">
+			</li>
+			<li>Аскат кызы Каныкей <input type="checkbox" class="attendance-checkbox" data-name="Аскат кызы Каныкей">
+			</li>
+			<li>Аскеров Ислам <input type="checkbox" class="attendance-checkbox" data-name="Аскеров Ислам"></li>
+			<li>Байдоолотов Түгөлбай <input type="checkbox" class="attendance-checkbox"
+					data-name="Байдоолотов Түгөлбай"></li>
+			<li>Бактыбеков Тагай <input type="checkbox" class="attendance-checkbox" data-name="Бактыбеков Тагай"></li>
+			<li class="honor">Бакытбекова Каухар — Тазалык сектор <input type="checkbox" class="attendance-checkbox"
+					data-name="Бакытбекова Каухар"></li>
+			<li>Бекмырзаева Чолпонай <input type="checkbox" class="attendance-checkbox"
+					data-name="Бекмырзаева Чолпонай"></li>
+			<li>Жанышев Ай-теңир <input type="checkbox" class="attendance-checkbox" data-name="Жанышев Ай-теңир"></li>
+			<li>Жолдошбекова Санира <input type="checkbox" class="attendance-checkbox" data-name="Жолдошбекова Санира">
+			</li>
+			<li>Жумакунов Жанат <input type="checkbox" class="attendance-checkbox" data-name="Жумакунов Жанат"></li>
+			<li>Идрисова Салима <input type="checkbox" class="attendance-checkbox" data-name="Идрисова Салима"></li>
+			<li>Ильичбекова Камила <input type="checkbox" class="attendance-checkbox" data-name="Ильичбекова Камила">
+			</li>
+			<li>Калмаматова Амина <input type="checkbox" class="attendance-checkbox" data-name="Калмаматова Амина"></li>
+			<li>Керимбекова Элина <input type="checkbox" class="attendance-checkbox" data-name="Керимбекова Элина"></li>
+			<li>Мансуров Санжар <input type="checkbox" class="attendance-checkbox" data-name="Мансуров Санжар"></li>
+			<li>Маратов Улукмырза <input type="checkbox" class="attendance-checkbox" data-name="Маратов Улукмырза"></li>
+			<li>Миргазиева Халима <input type="checkbox" class="attendance-checkbox" data-name="Миргазиева Халима"></li>
+			<li class="honor">Муратов Элдар — Жардамчы <input type="checkbox" class="attendance-checkbox"
+					data-name="Муратов Элдар"></li>
+			<li>Намазбеков Бейше <input type="checkbox" class="attendance-checkbox" data-name="Намазбеков Бейше"></li>
+			<li>Нурбеков Эллан <input type="checkbox" class="attendance-checkbox" data-name="Нурбеков Эллан"></li>
+			<li>Нурболотов Нурнасип <input type="checkbox" class="attendance-checkbox" data-name="Нурболотов Нурнасип">
+			</li>
+			<li>Сабырбекова Мырзайым <input type="checkbox" class="attendance-checkbox"
+					data-name="Сабырбекова Мырзайым"></li>
+			<li>Табалдиева Сабина <input type="checkbox" class="attendance-checkbox" data-name="Табалдиева Сабина"></li>
+			<li>Турдубеков Нуриман <input type="checkbox" class="attendance-checkbox" data-name="Турдубеков Нуриман">
+			</li>
+			<li>Төлөмүшов Кайрат <input type="checkbox" class="attendance-checkbox" data-name="Төлөмүшов Кайрат"></li>
+			<li>Эсенбекова Каныкей <input type="checkbox" class="attendance-checkbox" data-name="Эсенбекова Каныкей">
+			</li>
 		</ul>
+		<button class="edit-button">Включить редактирование</button>
 	</section>
 
 	<section class="class-statistics">
@@ -140,47 +174,38 @@
 	<section class="duty-schedule">
 		<h2>График дежурства:</h2>
 		<ul>
-			<li><strong>Понедельник:</strong> Арсен, Нуриман, Аделина <input type="checkbox" class="duty-checkbox"
-					data-day="monday"></li>
-			<li><strong>Вторник:</strong> Нурсултан, Эйнар, Акылай <input type="checkbox" class="duty-checkbox"
-					data-day="tuesday"></li>
-			<li><strong>Среда:</strong> Элмар, Алихан, А.Каныкей <input type="checkbox" class="duty-checkbox"
-					data-day="wednesday"></li>
-			<li><strong>Четверг:</strong> Рамазан, Ислам, Каухар <input type="checkbox" class="duty-checkbox"
-					data-day="thursday"></li>
-			<li><strong>Пятница:</strong> Түгөлбай, Тагай, Чолпонай <input type="checkbox" class="duty-checkbox"
-					data-day="friday"></li>
+			<li><strong>Понедельник:</strong> Арсен, Нуриман, Аделина <input type="checkbox" class="attendance-checkbox"
+					</li>
+			<li><strong>Вторник:</strong> Нурсултан, Эйнар, Акылай</li>
+			<li><strong>Среда:</strong> Элмар, Алихан, А.Каныкей</li>
+			<li><strong>Четверг:</strong> Рамазан, Ислам, Каухар</li>
+			<li><strong>Пятница:</strong> Түгөлбай, Тагай, Чолпонай</li>
 		</ul>
 	</section>
 
 	<script>
-		const ws = new WebSocket('ws://localhost:8080');
+		const ws = new WebSocket('ws://192.168.1.5:8080');
 
-		// Обработчик получения сообщений от сервера
 		ws.onmessage = (event) => {
 			const message = JSON.parse(event.data);
-
 			if (message.type === 'sync') {
-				// Синхронизируем состояния всех чекбоксов при подключении
-				Object.entries(message.data).forEach(([day, isChecked]) => {
-					const checkbox = document.querySelector(`.duty-checkbox[data-day="${day}"]`);
+				message.data.forEach(({ name, checked }) => {
+					const checkbox = document.querySelector(`.attendance-checkbox[data-name="${name}"]`);
 					if (checkbox) {
-						checkbox.checked = isChecked;
+						checkbox.checked = checked;
 						updateCheckboxStyle(checkbox);
 					}
 				});
 			} else if (message.type === 'update') {
-				// Обновляем состояние конкретного чекбокса
-				const { day, isChecked } = message;
-				const checkbox = document.querySelector(`.duty-checkbox[data-day="${day}"]`);
+				const { name, checked } = message;
+				const checkbox = document.querySelector(`.attendance-checkbox[data-name="${name}"]`);
 				if (checkbox) {
-					checkbox.checked = isChecked;
+					checkbox.checked = checked;
 					updateCheckboxStyle(checkbox);
 				}
 			}
 		};
 
-		// Функция обновления стиля чекбокса
 		function updateCheckboxStyle(checkbox) {
 			const parentLi = checkbox.closest('li');
 			if (checkbox.checked) {
@@ -190,20 +215,23 @@
 			}
 		}
 
-		// Отправка состояния чекбокса на сервер
-		const checkboxes = document.querySelectorAll('.duty-checkbox');
-		checkboxes.forEach((checkbox) => {
+		document.querySelectorAll('.attendance-checkbox').forEach((checkbox) => {
 			checkbox.addEventListener('change', (e) => {
-				const day = e.target.dataset.day;
-				const isChecked = e.target.checked;
-
-				// Отправляем данные на сервер
-				ws.send(JSON.stringify({ type: 'update', day, isChecked }));
+				const name = e.target.dataset.name;
+				const checked = e.target.checked;
+				ws.send(JSON.stringify({ type: 'update', name, checked }));
 				updateCheckboxStyle(e.target);
 			});
 		});
 
-
+		document.querySelector('.edit-button').addEventListener('click', () => {
+			const code = prompt('Введите код для редактирования:');
+			if (code === 'MortisCoder') {
+				alert('Редактирование включено!');
+			} else {
+				alert('Неверный код.');
+			}
+		});
 	</script>
 </body>
 
